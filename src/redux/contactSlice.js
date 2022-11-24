@@ -17,8 +17,6 @@ const contactSlice = createSlice({
       isLoading: false,
       error: null,
     },
-    isLoading: false,
-    error: null,
     filter: '',
   },
   reducers: {

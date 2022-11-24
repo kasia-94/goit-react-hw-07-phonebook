@@ -6,5 +6,9 @@ export const Title = styled.div`
 `;
 
 export const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 15px;
 `;

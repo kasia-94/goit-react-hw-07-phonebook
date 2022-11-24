@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { List, Button, Item } from './ContactList.styled';
+import { List, Button, Item, Name } from './ContactList.styled';
 import {
   selectFilter,
   selectContacts,
@@ -8,6 +8,7 @@ import {
   selectLoading,
 } from 'redux/selectors';
 import { fetchContacts, deleteContact } from 'redux/operations';
+import { Loader } from 'components/Loader/Loader';
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -30,15 +31,14 @@ const ContactList = () => {
 
   return (
     <>
-      {isLoading && <p>Loading contacts...</p>}
+      {isLoading && <Loader />}
       {error && <p>{error}</p>}
       {contacts.length > 0 && (
         <List>
           {showContact().map(({ id, name, number }) => (
             <Item key={id}>
-              <p>
-                {name}: {number}
-              </p>
+              <Name>{name}:</Name>
+              <p>{number}</p>
               <Button type="button" onClick={() => dispatch(deleteContact(id))}>
                 Delete
               </Button>
