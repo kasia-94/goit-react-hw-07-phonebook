@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { List, Button, Item } from './ContactList.styled';
-import { getFilter, getContacts, getError, getLoading } from 'redux/selectors';
+import {
+  selectFilter,
+  selectContacts,
+  selectError,
+  selectLoading,
+} from 'redux/selectors';
 import { fetchContacts, deleteContact } from 'redux/operations';
 
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const error = useSelector(getError);
-  const isLoading = useSelector(getLoading);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
